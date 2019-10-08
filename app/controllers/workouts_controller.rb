@@ -24,7 +24,7 @@ class WorkoutsController < ApplicationController
         workout.mood = params[:mood]
         workout.length = params[:length]
         workout.save
-        render 'index'
+        render 'show'
     end
 
     def edit 
