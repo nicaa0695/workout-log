@@ -9,14 +9,23 @@ class WorkoutsController < ApplicationController
         @workout = Workout.new
     end 
 
-    def create 
-        @workout = Workout.new(workout_params)
-        if @workout.save 
-            redirect_to @workout
-        else 
-            render 'new'
-        end 
-    end 
+    # def create 
+    #     @workout = Workout.new(workout_params)
+    #     if @workout.save 
+    #         redirect_to @workout
+    #     else 
+    #         render 'new'
+    #     end 
+    # end 
+    def create
+        workout = Workout.new
+        workout.date = params[:date]
+        workout.workout = params[:workout]
+        workout.mood = params[:mood]
+        workout.length = params[:length]
+        workout.save
+        render 'index'
+    end
 
     def edit 
     end
@@ -29,9 +38,9 @@ class WorkoutsController < ApplicationController
 
     private 
 
-    def workout_params
-        params.require(:workout).permit(:date, :workout, :mood, :length) 
-    end 
+    # def workout_params
+    #     params.require(:workout).permit(:date, :workout, :mood, :length) 
+    # end 
 
     def find_workout 
     end 
