@@ -3,7 +3,7 @@ class WorkoutsController < ApplicationController
     def index 
     end 
 
-    def show 
+    def show
     end 
 
     def new 
@@ -39,9 +39,9 @@ class WorkoutsController < ApplicationController
 
     private 
 
-    # def workout_params
-    #     params.require(:workout).permit(:date, :workout, :mood, :length) 
-    # end 
+    def workout_params
+        params.require(:workout).permit(:date, :workout, :mood, :length) 
+    end 
 
     def find_workout
         @workout = Workout.find(params[:id])
