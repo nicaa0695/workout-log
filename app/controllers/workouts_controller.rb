@@ -1,6 +1,7 @@
 class WorkoutsController < ApplicationController
     before_action :find_workout, only: [:show, :edit, :update, :destroy]
-    def index 
+    def index
+        @workouts = Workout.all 
     end 
 
     def show
