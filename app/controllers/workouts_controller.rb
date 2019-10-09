@@ -18,23 +18,8 @@ class WorkoutsController < ApplicationController
         @workout.mood = params[:mood]
         @workout.length = params[:length]
         @workout.save
-        redirect_to workout_path(@workout)
-        # @workout = Workout.new(workout_params)
-        # if @workout.save 
-        #     redirect_to @workout
-        # else 
-        #     render 'show'
-        # end 
+        redirect_to workout_path(@workout) 
     end 
-    # def create
-    #     workout = Workout.new
-    #     workout.date = params[:date]
-    #     workout.training = params[:training]
-    #     workout.mood = params[:mood]
-    #     workout.length = params[:length]
-    #     workout.save
-    #     redirect_to 'show'
-    # end
 
     def edit
         @workout = Workout.find(params[:id])
@@ -44,14 +29,11 @@ class WorkoutsController < ApplicationController
         @workout = Workout.find(params[:id])
         @workout.update(date: params[:workout][:date], training: params[:workout][:training], mood: params[:workout][:mood], length: params[:workout][:length])
         redirect_to workout_path(@workout)
-        # if @workout.update(workout_params)
-        #     redirect_to @workout 
-        # else 
-        #     render 'edit'
-        # end 
     end 
 
     def destroy 
+        @workout.destroy
+        redirect_to root_path
     end 
 
     private 
